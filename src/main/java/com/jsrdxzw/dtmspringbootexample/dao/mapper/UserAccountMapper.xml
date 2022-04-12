@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jsrdxzw.dtmspringbootexample.dao.mapper.UserAccountMapper">
+    <update id="sagaAdjustBalance">
+        update user_account
+        set balance = balance + #{amount}
+        where user_id = #{uid}
+    </update>
+
+    <update id="tccAdjustTrading">
+        update user_account
+        set trading_balance=trading_balance + #{amount}
+        where user_id = #{uid}
+          and trading_balance + #{amount} + balance >= 0
+    </update>
+
+    <update id="tccAdjustBalance">
+        update user_account
+        set trading_balance=trading_balance - #{amount},
+            balance=balance + #{amount}
+        where user_id = #{uid}
+    </update>
+</mapper>

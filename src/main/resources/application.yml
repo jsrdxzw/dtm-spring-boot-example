@@ -1,0 +1,15 @@
+server:
+  port: 9090
+
+dtm:
+  http-server: http://localhost:36789/api/dtmsvr
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password:
+    url: jdbc:mysql://localhost:3306/dtm_example
+
+mybatis-plus:
+  mapper-locations: classpath*:com/jsrdxzw/**/mapper/*.xml
